@@ -12,4 +12,8 @@ public Patron(String name, Book book) {
 	this.name = name;
 	books.add(book);
 }
+
+public boolean equals(Object o) {
+	return name.equals(((Patron)o).name);
+}
 }

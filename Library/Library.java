@@ -112,11 +112,15 @@ public class Library {
 				boolean is_book_on_loan = list.contains(book);
 				if(is_book_on_loan) {
 					((Patron)patronList[patronName.charAt(0)].get(patron_index)).books.remove(book);
-					author_index = authorList[authorName.charAt(0)].indexOf(authorName);
-					book_index = ((Author)authorList[authorName.charAt(0)].get(author_index)).books.indexOf(bookName);
+					author_index = authorList[authorName.charAt(0)].indexOf(author);
+					book_index = ((Author)authorList[authorName.charAt(0)].get(author_index)).books.indexOf(book);
 					book = (Book)((Author)authorList[authorName.charAt(0)].get(author_index)).books.get(book_index);
 					book.count_of_books = book.count_of_books+1;
 					((Author)authorList[authorName.charAt(0)].get(author_index)).books.set(book_index, book);
+				}
+				else {
+					System.out.println("Book not let by this patron");
+					continue;
 				}
 			}
 			else{
@@ -127,7 +131,7 @@ public class Library {
 		else {
 			System.out.println("Enter a valid patron name who already used the library");
 		}
-	}while(patron_index>-1 && author_index>-1 && book_index>-1);
+	}while(patron_index<=-1 && author_index<=-1 && book_index<=-1);
 		
 	}
 
